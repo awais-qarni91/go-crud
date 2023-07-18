@@ -1,1 +1,0 @@
-[{"id":1,"name":"IT"},{"id":3,"name":"Health"},{"id":4,"name":"Accounts"}]

@@ -17,13 +17,17 @@ type Article struct {
 var id = 0
 var ArticleMap = make(map[int]*Article)
 
+// GeArticle function getting article by id
 func GeArticle(i int) *Article {
 	return ArticleMap[i]
 }
+
+// DelArticle function deleting article by id
 func DelArticle(i int) {
 	delete(ArticleMap, i)
 }
 
+// CreateArticle - API to create article in local memory
 func CreateArticle(w http.ResponseWriter, r *http.Request) {
 	requestJSON := make(map[string]interface{})
 	responseJSON := make(map[string]interface{})

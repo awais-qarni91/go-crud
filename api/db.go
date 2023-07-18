@@ -15,7 +15,7 @@ var err error
 // InitializeDB connect database
 func InitializeDB() error {
 
-	DbConnection, err = sql.Open("mysql", "awais:golang456@tcp(localhost:3306)/db-crud")
+	DbConnection, err = sql.Open("mysql", "root:golang456@tcp(mysql-container)/db_crud")
 	err = CreateProductTable()
 	if err != nil {
 		fmt.Println("Error accessing table")
@@ -36,7 +36,7 @@ func CreateProductTable() error {
 	query := "CREATE TABLE IF NOT EXISTS `products` (`id` int primary key NOT NULL AUTO_INCREMENT, `name` varchar(50) NOT NULL, `created_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP)"
 	_, err := DbConnection.ExecContext(ctx, query)
 	if err != nil {
-		log.Printf("Error %s when creating TodoItem table", err)
+		log.Printf("Error %s when creating Products table", err)
 		return err
 	}
 	return err

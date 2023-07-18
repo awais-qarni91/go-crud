@@ -13,20 +13,6 @@ import (
 var Id int
 var FileName = "categories.txt"
 
-func main() {
-
-	AddCategoryInFile(FileName, "Pakistan")
-	AddCategoryInFile(FileName, "INDIA")
-	AddCategoryInFile(FileName, "CANADA")
-	AddCategoryInFile(FileName, "IRAN")
-	AddCategoryInFile(FileName, "IRAQ")
-
-	fmt.Println(GetAllCategories(FileName))
-	fmt.Println(UpdateCategoryById(FileName, 3, "China"))
-	fmt.Println(GetCategoryById(FileName, 3))
-
-}
-
 // CreateCategoryApi	create new category in txt file
 func CreateCategoryApi(w http.ResponseWriter, r *http.Request) {
 	requestJSON := make(map[string]interface{})
@@ -155,6 +141,7 @@ func UpdateCategoryApi(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
+// DeleteCategoryApi	delete category data by id, stored in txt file
 func DeleteCategoryApi(w http.ResponseWriter, r *http.Request) {
 	responseJSON := make(map[string]interface{})
 
@@ -168,6 +155,7 @@ func DeleteCategoryApi(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
+// LoadFileCategories Function load already saved categories from txt file
 func LoadFileCategories(fileName string) ([]map[string]interface{}, error) {
 
 	var existingData []map[string]interface{}
@@ -192,6 +180,7 @@ func LoadFileCategories(fileName string) ([]map[string]interface{}, error) {
 	return existingData, nil
 }
 
+// AddCategoryInFile Function add category in txt file
 func AddCategoryInFile(fileName string, categoryName string) ([]map[string]interface{}, error) {
 
 	//var lastContentId interface{}
@@ -221,6 +210,7 @@ func AddCategoryInFile(fileName string, categoryName string) ([]map[string]inter
 	return existingData, nil
 }
 
+// GetCategoryById Function get category by id from txt file
 func GetCategoryById(fileName string, id int) map[string]interface{} {
 
 	existingData, _ := LoadFileCategories(fileName)
@@ -235,6 +225,8 @@ func GetCategoryById(fileName string, id int) map[string]interface{} {
 
 	return nil
 }
+
+// UpdateCategoryById Function updates category already stored in txt file
 func UpdateCategoryById(fileName string, id int, name string) map[string]interface{} {
 
 	existingData, _ := LoadFileCategories(fileName)

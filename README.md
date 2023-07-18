@@ -142,3 +142,11 @@ To remove a container, use the following command:
 docker rm -f <container_name>/<container_id>
 ```
 
+ ### Remove Docker Network
+
+To remove a network, use the following command:
+
+```bash
+docker network rm <network_name>
+```
+
